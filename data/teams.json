@@ -1,0 +1,42 @@
+{
+  "clubs": [
+    { "id": "real-madrid", "name": "ريال مدريد", "nameEn": "Real Madrid", "rating": 86, "country": "إسبانيا", "logo": "https://crests.football-data.org/86.png" },
+    { "id": "man-city", "name": "مانشستر سيتي", "nameEn": "Manchester City", "rating": 85, "country": "إنجلترا", "logo": "https://crests.football-data.org/65.png" },
+    { "id": "bayern", "name": "بايرن ميونخ", "nameEn": "Bayern Munich", "rating": 85, "country": "ألمانيا", "logo": "https://crests.football-data.org/5.png" },
+    { "id": "arsenal", "name": "أرسنال", "nameEn": "Arsenal", "rating": 84, "country": "إنجلترا", "logo": "https://crests.football-data.org/57.png" },
+    { "id": "barcelona", "name": "برشلونة", "nameEn": "FC Barcelona", "rating": 84, "country": "إسبانيا", "logo": "https://crests.football-data.org/81.png" },
+    { "id": "liverpool", "name": "ليفربول", "nameEn": "Liverpool", "rating": 84, "country": "إنجلترا", "logo": "https://crests.football-data.org/64.png" },
+    { "id": "psg", "name": "باريس سان جيرمان", "nameEn": "Paris Saint-Germain", "rating": 83, "country": "فرنسا", "logo": "https://crests.football-data.org/524.png" },
+    { "id": "inter", "name": "إنتر ميلان", "nameEn": "Inter Milan", "rating": 83, "country": "إيطاليا", "logo": "https://crests.football-data.org/108.png" },
+    { "id": "leverkusen", "name": "باير ليفركوزن", "nameEn": "Bayer Leverkusen", "rating": 82, "country": "ألمانيا", "logo": "https://crests.football-data.org/3.png" },
+    { "id": "chelsea", "name": "تشيلسي", "nameEn": "Chelsea", "rating": 82, "country": "إنجلترا", "logo": "https://crests.football-data.org/61.png" },
+    { "id": "atletico", "name": "أتلتيكو مدريد", "nameEn": "Atletico Madrid", "rating": 82, "country": "إسبانيا", "logo": "https://crests.football-data.org/78.png" },
+    { "id": "juventus", "name": "يوفنتوس", "nameEn": "Juventus", "rating": 81, "country": "إيطاليا", "logo": "https://crests.football-data.org/109.png" },
+    { "id": "milan", "name": "ميلان", "nameEn": "AC Milan", "rating": 81, "country": "إيطاليا", "logo": "https://crests.football-data.org/98.png" },
+    { "id": "dortmund", "name": "بوروسيا دورتموند", "nameEn": "Borussia Dortmund", "rating": 81, "country": "ألمانيا", "logo": "https://crests.football-data.org/4.png" },
+    { "id": "newcastle", "name": "نيوكاسل يونايتد", "nameEn": "Newcastle United", "rating": 80, "country": "إنجلترا", "logo": "https://crests.football-data.org/67.png" },
+    { "id": "aston-villa", "name": "أستون فيلا", "nameEn": "Aston Villa", "rating": 80, "country": "إنجلترا", "logo": "https://crests.football-data.org/58.png" },
+    { "id": "tottenham", "name": "توتنهام", "nameEn": "Tottenham", "rating": 80, "country": "إنجلترا", "logo": "https://crests.football-data.org/73.png" },
+    { "id": "man-utd", "name": "مانشستر يونايتد", "nameEn": "Manchester United", "rating": 80, "country": "إنجلترا", "logo": "https://crests.football-data.org/66.png" },
+    { "id": "al-hilal", "name": "الهلال", "nameEn": "Al Hilal", "rating": 78, "country": "السعودية", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/00/Al-Hilal_Saudi_FC_logo.svg/200px-Al-Hilal_Saudi_FC_logo.svg.png" },
+    { "id": "al-nassr", "name": "النصر", "nameEn": "Al Nassr", "rating": 77, "country": "السعودية", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Al-Nassr_FC_logo.svg/200px-Al-Nassr_FC_logo.svg.png" }
+  ],
+  "national": [
+    { "id": "france", "name": "فرنسا", "nameEn": "France", "rating": 85, "flag": "🇫🇷" },
+    { "id": "argentina", "name": "الأرجنتين", "nameEn": "Argentina", "rating": 85, "flag": "🇦🇷" },
+    { "id": "spain", "name": "إسبانيا", "nameEn": "Spain", "rating": 85, "flag": "🇪🇸" },
+    { "id": "england", "name": "إنجلترا", "nameEn": "England", "rating": 84, "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
+    { "id": "brazil", "name": "البرازيل", "nameEn": "Brazil", "rating": 84, "flag": "🇧🇷" },
+    { "id": "portugal", "name": "البرتغال", "nameEn": "Portugal", "rating": 84, "flag": "🇵🇹" },
+    { "id": "germany", "name": "ألمانيا", "nameEn": "Germany", "rating": 83, "flag": "🇩🇪" },
+    { "id": "netherlands", "name": "هولندا", "nameEn": "Netherlands", "rating": 82, "flag": "🇳🇱" },
+    { "id": "italy", "name": "إيطاليا", "nameEn": "Italy", "rating": 82, "flag": "🇮🇹" },
+    { "id": "morocco", "name": "المغرب", "nameEn": "Morocco", "rating": 81, "flag": "🇲🇦" },
+    { "id": "belgium", "name": "بلجيكا", "nameEn": "Belgium", "rating": 81, "flag": "🇧🇪" },
+    { "id": "croatia", "name": "كرواتيا", "nameEn": "Croatia", "rating": 80, "flag": "🇭🇷" },
+    { "id": "uruguay", "name": "أوروغواي", "nameEn": "Uruguay", "rating": 80, "flag": "🇺🇾" },
+    { "id": "saudi-arabia", "name": "السعودية", "nameEn": "Saudi Arabia", "rating": 73, "flag": "🇸🇦" },
+    { "id": "egypt", "name": "مصر", "nameEn": "Egypt", "rating": 74, "flag": "🇪🇬" },
+    { "id": "japan", "name": "اليابان", "nameEn": "Japan", "rating": 77, "flag": "🇯🇵" }
+  ]
+}

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحة بطولة FIFA | EA FC Tournament</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cairo & Chakra Petch -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom Style -->
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gaming: {
+              dark: '#0a0e17',
+              card: '#121826',
+              green: '#10b981',
+              emerald: '#059669',
+              gold: '#f59e0b',
+              accent: '#06b6d4'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0a0e17] text-slate-100 min-h-screen">
+
+  <!-- Top Announcement Bar / Connection Status -->
+  <div id="connectionBar" class="hidden bg-red-600/90 text-white text-xs py-1 text-center font-bold">
+    جاري إعادة الاتصال بالخادم...
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="border-b border-slate-800/80 bg-slate-900/60 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-600 flex items-center justify-center font-black text-xl text-white shadow-lg shadow-emerald-500/20">
+          FC
+        </div>
+        <div>
+          <h1 id="tournamentNavName" class="font-black text-lg sm:text-xl tracking-tight text-white flex items-center gap-2">
+            FIFA Tournament
+          </h1>
+          <p id="tournamentNavSub" class="text-xs text-slate-400">خروج المغلوب · EA FC</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button id="copyShareBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 transition border border-slate-700">
+          <i data-lucide="share-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>مشاركة الرابط</span>
+        </button>
+        <a href="/admin" class="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-xs font-semibold text-slate-400 border border-slate-800 transition">
+          <i data-lucide="shield" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>لوحة الأدمن</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+
+    <!-- Champion Banner (Visible only when status == completed) -->
+    <div id="championSection" class="hidden">
+      <div class="gaming-card p-6 rounded-2xl border-2 border-amber-500/60 bg-gradient-to-r from-amber-950/40 via-slate-900/80 to-amber-950/40 text-center relative overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-extrabold uppercase mb-3">
+          <i data-lucide="trophy" class="w-4 h-4 text-amber-400"></i>
+          بطل البطولة
+        </div>
+        <h2 id="championName" class="text-3xl sm:text-4xl font-black text-white glow-text-gold mb-1">-</h2>
+        <div id="championTeam" class="text-base text-amber-200/90 font-bold flex items-center justify-center gap-2 mb-4">
+          <span>-</span>
+        </div>
+        <div class="text-xs text-slate-400">
+          الوصيف: <span id="runnerUpName" class="text-slate-200 font-bold">-</span> (<span id="runnerUpTeam">-</span>)
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Tournament Hero Card -->
+    <div class="gaming-card rounded-2xl p-5 sm:p-7 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <!-- Tournament Info -->
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="gameVersionBadge" class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-black tracking-wider uppercase">
+              EA FC 26
+            </span>
+            <span id="tournamentTypeBadge" class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 text-xs font-bold">
+              خروج المغلوب (Knockout)
+            </span>
+            <span id="allowedTeamsBadge" class="px-2.5 py-0.5 rounded-md bg-cyan-950/60 text-cyan-300 border border-cyan-800/40 text-xs font-bold">
+              أندية ومنتخبات
+            </span>
+          </div>
+
+          <h2 id="tournamentHeroName" class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            🏆 FIFA Night #04
+          </h2>
+
+          <div class="flex items-center gap-2 text-sm text-slate-400">
+            <span>الحالة الحالية:</span>
+            <span id="statusBadge" class="px-3 py-1 rounded-full text-xs font-extrabold inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              التسجيل مفتوح
+            </span>
+          </div>
+        </div>
+
+        <!-- Call to Action / Registration Button -->
+        <div id="heroActionContainer" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <button id="openRegisterModalBtn" class="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-slate-950 font-black text-base shadow-lg shadow-emerald-500/25 transition transform active:scale-95">
+            <i data-lucide="user-plus" class="w-5 h-5"></i>
+            <span>سجل الآن في البطولة</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- State Banners (Context messages per state) -->
+      <div id="stateBannerContainer" class="mt-6 pt-5 border-t border-slate-800">
+        <!-- Status 1: Open -->
+        <div id="bannerOpen" class="hidden text-xs sm:text-sm text-slate-300 flex items-center gap-2">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+          <span>التسجيل متاح لجميع أعضاء المجموعة. اختر فريقك واحجز مقعدك فورًا قبل اكتمال العدد!</span>
+        </div>
+
+        <!-- Status 2: Full -->
+        <div id="bannerFull" class="hidden bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 text-amber-300 flex items-center gap-3">
+          <i data-lucide="alert-triangle" class="w-6 h-6 flex-shrink-0 text-amber-400"></i>
+          <div>
+            <div class="font-black text-sm">اكتمل عدد المشاركين!</div>
+            <div class="text-xs text-amber-200/80">ننتظر مراجعة واعتماد القائمة النهائية وبدء القرعة بواسطة الأدمن.</div>
+          </div>
+        </div>
+
+        <!-- Status 3: Waiting Draw -->
+        <div id="bannerWaitingDraw" class="hidden bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4 text-cyan-300 flex items-center gap-3">
+          <i data-lucide="clock" class="w-6 h-6 flex-shrink-0 text-cyan-400 animate-spin"></i>
+          <div>
+            <div class="font-black text-sm">تم اعتماد المشاركين!</div>
+            <div class="text-xs text-cyan-200/80">تم إغلاق القائمة واعتمادها رسميًا. القرعة ستبدأ قريبًا وسيظهر جدول المواجهات مباشرة.</div>
+          </div>
+        </div>
+
+        <!-- Status 4: Started -->
+        <div id="bannerStarted" class="hidden bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4 text-emerald-300 flex items-center gap-3">
+          <i data-lucide="flame" class="w-6 h-6 flex-shrink-0 text-emerald-400 animate-bounce"></i>
+          <div>
+            <div class="font-black text-sm">البطولة بدأت رسميًا!</div>
+            <div class="text-xs text-emerald-200/80">تم إجراء القرعة واعتماد المواجهات. تابع المخطط أدناه لمعرفة خصمك ومتابعة النتائج أولاً بأول.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Participants Counter & Progress -->
+    <div class="gaming-card rounded-2xl p-5 sm:p-6 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-black text-base sm:text-lg text-white flex items-center gap-2">
+          <i data-lucide="users" class="w-5 h-5 text-emerald-400"></i>
+          <span>حالة المقاعد والتسجيل</span>
+        </h3>
+        <span id="counterRatio" class="font-black font-gaming text-lg sm:text-2xl text-emerald-400 glow-text-green">
+          0 / 16
+        </span>
+      </div>
+
+      <!-- Animated Progress Bar -->
+      <div class="w-full bg-slate-800/80 rounded-full h-4 overflow-hidden p-0.5 border border-slate-700/60">
+        <div id="progressBar" class="progress-bar-fill bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 h-full rounded-full w-0"></div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-3 gap-3 pt-2 text-center">
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-3">
+          <div class="text-xs text-slate-400 mb-1">المشاركون المؤكدون</div>
+          <div id="statRegistered" class="text-xl sm:text-2xl font-black text-white font-gaming">0</div>
+        </div>
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-3">
+          <div class="text-xs text-slate-400 mb-1">المقاعد المتبقية</div>
+          <div id="statRemaining" class="text-xl sm:text-2xl font-black text-emerald-400 font-gaming">16</div>
+        </div>
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-3">
+          <div class="text-xs text-slate-400 mb-1">نسبة الاكتمال</div>
+          <div id="statPercent" class="text-xl sm:text-2xl font-black text-cyan-400 font-gaming">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Participants List Section -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-black text-lg text-white flex items-center gap-2">
+          <i data-lucide="list-ordered" class="w-5 h-5 text-emerald-400"></i>
+          <span>قائمة المشاركين المسجلين</span>
+          <span id="participantsCountBadge" class="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-bold">0</span>
+        </h3>
+      </div>
+
+      <!-- Grid of Participant Cards -->
+      <div id="participantsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <!-- Loaded via JS -->
+      </div>
+      <div id="noParticipantsMsg" class="hidden text-center py-10 bg-slate-900/40 rounded-xl border border-dashed border-slate-800 text-slate-500 text-sm">
+        لا يوجد مشاركون مسجلون حتى الآن. كن أول المسجلين!
+      </div>
+    </section>
+
+    <!-- Tournament Knockout Bracket Section -->
+    <section class="space-y-4 pt-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-black text-lg text-white flex items-center gap-2">
+          <i data-lucide="git-branch" class="w-5 h-5 text-emerald-400"></i>
+          <span>مخطط البطولة (Knockout Bracket)</span>
+        </h3>
+      </div>
+
+      <!-- Hidden Bracket Notice (When NOT Started) -->
+      <div id="bracketHiddenNotice" class="gaming-card p-8 rounded-2xl text-center space-y-3 border-dashed border-slate-700">
+        <div class="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700 mx-auto flex items-center justify-center text-slate-400">
+          <i data-lucide="lock" class="w-7 h-7 text-amber-400"></i>
+        </div>
+        <h4 class="text-base sm:text-lg font-black text-white">مخطط البطولة غير متاح حاليًا</h4>
+        <p class="text-xs sm:text-sm text-slate-400 max-w-md mx-auto">
+          تطبيقًا لقواعد البطولة: تظل القرعة ومخطط المواجهات مخفيين تمامًا حتى يكتمل عدد المشاركين المطلوب، ويعتمد الأدمن القائمة النهائية ويبدأ البطولة رسميًا.
+        </p>
+      </div>
+
+      <!-- Bracket Tree (When Started / Completed) -->
+      <div id="bracketLiveContainer" class="hidden gaming-card rounded-2xl p-4 overflow-hidden">
+        <div class="text-xs text-slate-400 mb-3 px-2 flex items-center justify-between">
+          <span>* اسحب أفقيًا لعرض باقي الأدوار على شاشات الجوال</span>
+          <span class="text-emerald-400 font-bold">تحديث فوري للنتائج</span>
+        </div>
+        <div id="bracketTree" class="bracket-container">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Registration Modal -->
+  <div id="registerModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
+    <div class="gaming-card rounded-2xl max-w-lg w-full max-h-[92vh] flex flex-col border border-slate-700/80 shadow-2xl overflow-hidden">
+      <!-- Modal Header -->
+      <div class="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+            <i data-lucide="user-check" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-black text-base sm:text-lg text-white">تسجيل مشارك جديد</h3>
+            <p class="text-xs text-slate-400">اختر اسمك وفريقك لتأكيد مقعدك</p>
+          </div>
+        </div>
+        <button id="closeModalBtn" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="p-4 sm:p-5 overflow-y-auto space-y-4 flex-1">
+        <!-- Player Name Input -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold text-slate-300">اسم اللاعب <span class="text-rose-400">*</span></label>
+          <div class="relative">
+            <input type="text" id="regPlayerName" placeholder="مثال: محمد، أبو أحمد، Sniper7" 
+                   class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+          </div>
+        </div>
+
+        <!-- Temporary Lock Banner (Visible when team clicked) -->
+        <div id="lockCountdownBanner" class="hidden bg-emerald-950/60 border border-emerald-500/40 rounded-xl p-3 flex items-center justify-between text-xs text-emerald-300">
+          <div class="flex items-center gap-2">
+            <i data-lucide="timer" class="w-4 h-4 text-emerald-400 animate-pulse"></i>
+            <span>تم حجز الفريق لك مؤقتًا:</span>
+          </div>
+          <div class="font-black font-gaming text-sm text-emerald-400" id="lockTimerText">02:00</div>
+        </div>
+
+        <!-- Team Category Tabs & Search -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <label class="block text-xs font-bold text-slate-300">اختر الفريق <span class="text-rose-400">*</span></label>
+            <!-- Tabs -->
+            <div class="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800 text-xs">
+              <button type="button" class="category-tab px-2.5 py-1 rounded-md font-bold transition active bg-emerald-500/20 text-emerald-400" data-cat="all">الكل</button>
+              <button type="button" class="category-tab px-2.5 py-1 rounded-md font-bold text-slate-400 hover:text-white transition" data-cat="clubs">الأندية</button>
+              <button type="button" class="category-tab px-2.5 py-1 rounded-md font-bold text-slate-400 hover:text-white transition" data-cat="national">المنتخبات</button>
+            </div>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative">
+            <input type="text" id="teamSearchInput" placeholder="ابحث عن اسم النادي أو المنتخب..." 
+                   class="w-full bg-slate-900/70 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-slate-600">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 absolute left-3 top-2.5"></i>
+          </div>
+        </div>
+
+        <!-- Teams Grid -->
+        <div id="teamsSelectionGrid" class="grid grid-cols-2 gap-2 max-h-56 overflow-y-auto pr-1">
+          <!-- Loaded via JS -->
+        </div>
+
+        <!-- Error/Alert message -->
+        <div id="modalAlertMsg" class="hidden p-2.5 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs"></div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-800 bg-slate-900/60 flex items-center justify-end gap-2">
+        <button id="cancelModalBtn" type="button" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-400 hover:text-white hover:bg-slate-800 transition">
+          إلغاء
+        </button>
+        <button id="confirmRegisterBtn" type="button" disabled class="px-5 py-2.5 rounded-xl text-xs font-black bg-emerald-500 hover:bg-emerald-600 disabled:opacity-40 disabled:cursor-not-allowed text-slate-950 transition flex items-center gap-1.5 shadow-md shadow-emerald-500/20">
+          <span>تأكيد التسجيل</span>
+          <i data-lucide="check" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 left-5 z-50 hidden bg-slate-900 border border-emerald-500/40 text-emerald-300 px-4 py-3 rounded-xl shadow-xl text-xs font-bold flex items-center gap-2">
+    <i data-lucide="info" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toastMsg">تم التحديث</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
