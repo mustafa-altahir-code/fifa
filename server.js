@@ -419,7 +419,13 @@ function generateKnockoutMatches(tournamentId, participants, maxCount) {
   db.prepare('DELETE FROM matches WHERE tournament_id = ?').run(tournamentId);
 
   const roundsInfo = [];
-  if (maxCount === 16) {
+  if (maxCount === 32) {
+    roundsInfo.push({ name: 'دور الـ 32', count: 16, order: 1 });
+    roundsInfo.push({ name: 'دور الـ 16', count: 8, order: 2 });
+    roundsInfo.push({ name: 'ربع النهائي', count: 4, order: 3 });
+    roundsInfo.push({ name: 'نصف النهائي', count: 2, order: 4 });
+    roundsInfo.push({ name: 'النهائي', count: 1, order: 5 });
+  } else if (maxCount === 16) {
     roundsInfo.push({ name: 'دور الـ 16', count: 8, order: 1 });
     roundsInfo.push({ name: 'ربع النهائي', count: 4, order: 2 });
     roundsInfo.push({ name: 'نصف النهائي', count: 2, order: 3 });
